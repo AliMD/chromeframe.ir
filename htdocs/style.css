@@ -255,11 +255,13 @@ ul#navigation-bar{
 	margin:50px 0;
 	line-height:2em;	
 }
-.basic-page h3{
+.basic-page h4{
 	margin-top:5px;
+	color:#333;
 }
 .basic-page p{
-	font-size:14px;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:12px;
 	color:#666;	
 	border-bottom:1px dotted #CCC;
 }

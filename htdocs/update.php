@@ -202,12 +202,12 @@ ob_start();
 
 if(md5($_GET['p'])!='0397979ec002e5c7cfc70111701999e9') death('Access denied');
 
-$github_zip = 'http://localhost/test.zip';
+$github_zip = 'https://github.com/1dws/chromeframe.ir/zipball/master';
 $locat_zip = './last_update_temp.zip';
 $extract_dir = './last_update_temp';
 $htdoc_dir = "$extract_dir/htdocs";
 $public_dir = '.';
-$keep_files = 'cgibin,.htaccess,downloads';
+$keep_files = 'cgi-bin,.htaccess,backup,downloads';
 
 ?>
 
@@ -237,7 +237,7 @@ $keep_files = 'cgibin,.htaccess,downloads';
 
 	$keep_files .= ($keep_files?',':'').end(explode('/',$locat_zip));
 	$keep_files .= ','.end(explode('/',($_SERVER['SCRIPT_FILENAME'])));
-	e("<b>Removing old :</b> $public_dir <b>exept</b> $keep_files");
+	e("<b>Removing old :</b> $public_dir <b>except</b> $keep_files");
 	$keep_files = explode(',',$keep_files);
 
 	rrmdir($public_dir,$keep_files);

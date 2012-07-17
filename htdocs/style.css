@@ -200,10 +200,10 @@ ul#navigation-bar{
 }
 
 #sub-footer-left{
-	width: 49.999%;
 	float: left;
-	display: inline;
-	margin: 0;	
+}
+#sub-footer-right{
+	float: right;
 }
 #sub-footer p{
 	display:inline;	

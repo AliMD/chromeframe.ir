@@ -167,7 +167,7 @@ function rrmdir($dir,$exeption=false) {
 		@rmdir($dir);
 		e("Remove Dir: $dir");
 	}
- }
+}
 
 /**
  * Move all content of a dir to another dir.
@@ -195,17 +195,36 @@ function move_dir($olddir,$newdir,$keep_files) {
 			}
 		}
 	}
- }
+}
+
+/**
+ * Find first directory in $dir.
+ *
+ * @param   string     The directory path
+ *  
+ * @return  string     name of first directory or die.
+ */
+
+function get_first_dir($dir){
+	is_dir($dir) or death("$dir is not a directory");
+	$objects = scandir($dir);
+	foreach ($objects as $object) {
+		if ($object != "." && $object != ".." && is_dir("$dir/$object")) {
+			return $object;
+		}
+	}
+	death("Directory not fount in $dir");
+}
 
 // ----------- Updating site ----------
 ob_start();
 
 if(md5($_GET['p'])!='0397979ec002e5c7cfc70111701999e9') death('Access denied');
 
-$github_zip = 'https://github.com/1dws/chromeframe.ir/zipball/master';
+$github_zip = 'https://nodeload.github.com/1dws/chromeframe.ir/zipball/master';
 $locat_zip = './last_update_temp.zip';
 $extract_dir = './last_update_temp';
-$htdoc_dir = "$extract_dir/htdocs";
+$htdoc_dir = "htdocs";
 $public_dir = '.';
 $keep_files = 'cgi-bin,.htaccess,backup,downloads';
 
@@ -246,16 +265,17 @@ $keep_files = 'cgi-bin,.htaccess,backup,downloads';
 
 	e("<b>Extracting :</b> $locat_zip");
 	unzip($locat_zip,$extract_dir,false);
+
+	e('---------------');
+
+	$htdoc_dir=get_first_dir($extract_dir)."/$htdoc_dir";
+	e("<b>Move Dir :</b> $extract_dir/$htdoc_dir/* <b>to</b> $public_dir/");
+	move_dir("$extract_dir/$htdoc_dir",$public_dir,$keep_files);
+
+	e('---------------');
+
 	e("Delete tmp : $locat_zip");
 	unlink($locat_zip) or death("Error in deletting $locat_zip");
-
-	e('---------------');
-
-	e("<b>Move Dir :</b> $htdoc_dir/* <b>to</b> $public_dir/");
-	move_dir($htdoc_dir,$public_dir,$keep_files);
-
-	e('---------------');
-
 	e("<b>Removing tmp :</b> $extract_dir");
 	rrmdir($extract_dir);
 ?>	

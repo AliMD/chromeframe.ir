@@ -189,7 +189,7 @@ function move_dir($olddir,$newdir,$keep_files) {
 			$newobj="$newdir/$object";
 
 			is_dir($newobj) && rrmdir($newobj,$keep_files);
-			if(!is_dir($newobj)){
+			if(!(is_dir($newobj) || in_array($object,$keep_files))){
 				rename($oldobj, $newobj) or death("Error in moving $oldobj -> $newobj");
 				e("Move : $oldobj -> $newobj");
 			}

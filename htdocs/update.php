@@ -178,7 +178,7 @@ function rrmdir($dir,$exeption=false) {
  * @return  void
  */
 
-function move_dir($olddir,$newdir) {
+function move_dir($olddir,$newdir,$keep_files) {
 	is_dir($olddir) or death("$olddir is not a directory");
 	is_dir($newdir) or death("$newdir is not a directory");
 
@@ -188,11 +188,11 @@ function move_dir($olddir,$newdir) {
 			$oldobj="$olddir/$object";
 			$newobj="$newdir/$object";
 
-			is_dir($newobj) && rrmdir($newobj);
-			is_file($newobj) && unlink($newobj);
-
-			rename($oldobj, $newobj);
-			e("Move : $oldobj -> $newobj");
+			is_dir($newobj) && rrmdir($newobj,$keep_files);
+			if(!is_dir($newobj)){
+				rename($oldobj, $newobj) or death("Error in moving $oldobj -> $newobj");
+				e("Move : $oldobj -> $newobj");
+			}
 		}
 	}
  }
@@ -252,12 +252,12 @@ $keep_files = 'cgibin,.htaccess,downloads';
 	e('---------------');
 
 	e("<b>Move Dir :</b> $htdoc_dir/* <b>to</b> $public_dir/");
-	move_dir($htdoc_dir,$public_dir);
+	move_dir($htdoc_dir,$public_dir,$keep_files);
 
 	e('---------------');
 
 	e("<b>Removing tmp :</b> $extract_dir");
-	rrmdir($extract_dir,$keep_files);
+	rrmdir($extract_dir);
 ?>	
 </pre>
 

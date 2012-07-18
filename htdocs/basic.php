@@ -1,30 +1,5 @@
 <?php include 'inc/header.php'; ?>
 <?php $cmenu = 'faq'; include 'inc/topmenu.php'; ?>
-		<div id="header" class="section">
-			<div id="logo">
-				<a href="http://chromeframe.ir">
-					<img src="images/chrome_logo.jpg" alt="Google Chrome" width="179" height="40" style="border:0;" />
-				</a>
-			</div>
-			<ul id="navigation-bar">
-				<li>
-					<a href="index.html">
-						<span>درباره گوگل فریم</span>
-					</a>
-				</li>
-				<li>
-					<a href="developers.html">
-						<span>توسعه دهنده ها</span>
-					</a>
-				</li>
-				<li class="active">
-					<a  href="basic.html">
-						<span>سوالات متداول</span>
-					</a>
-				</li>
-			</ul>
-			<div class="clear"></div>
-		</div>
 		<div id="content">
 			<div class="basic-page">
 				<h4>گوگل کروم فریم چیست؟</h4>

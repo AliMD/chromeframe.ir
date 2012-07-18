@@ -197,6 +197,7 @@ ul#navigation-bar{
 	line-height: 16px;
 	margin: 25px auto 0;
 	padding: 11px 0;
+	direction: ltr;
 }
 
 #sub-footer-left{

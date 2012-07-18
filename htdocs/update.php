@@ -105,7 +105,7 @@ function unzip($src_file, $dest_dir=false, $create_zip_name_dir=true, $overwrite
 
 				file_put_contents($file_name, $fstream );
 				// Set the rights
-				chmod($file_name, 0777);
+				chmod($file_name, 0755);
 				e("Extract file: ".$file_name);
 			}
 			// Close the entry
@@ -134,7 +134,7 @@ function create_dirs($path){
 	  		$directory_path .= $directory."/";
 	  		if (!is_dir($directory_path)){
 				mkdir($directory_path);
-				chmod($directory_path, 0777);
+				chmod($directory_path, 0755);
 				e("Make Dir: $directory_path");
 	  		}
 		}

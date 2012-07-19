@@ -11,8 +11,7 @@
 				<p>
 					شما می توایند وب سایت خود را با کروم فریم نمایش دهید با اضافه کردن خط زیر در داخل تگ HEAD
 					<br />
-					<code style="color:#333;text-align:center;direction:ltr;display:block"> &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;chrome=1&quot;&gt;</code>
-				</p>
+&lt;meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" /&gt; </p>
 			</div>
 		</div>
 <?php include 'inc/footer.php'; ?>
